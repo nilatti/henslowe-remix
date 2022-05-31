@@ -1,7 +1,5 @@
 import { useLoaderData, Form } from "@remix-run/react";
 
-import { authenticator } from "../services/auth.server.js";
-
 const CONTAINER_STYLES = {
   width: "100%",
   height: "100vh",
@@ -19,18 +17,6 @@ const BUTTON_STYLES = {
   cursor: "pointer",
   color: "white",
   fontWeight: "bold",
-};
-
-export const loader = async ({ request }) => {
-  // authenticator.isAuthenticated function returns the user object if found
-  // if user is not authenticated then user would be redirected back to homepage ("/" route)
-  const user = await authenticator.isAuthenticated(request, {
-    failureRedirect: "/",
-  });
-
-  return {
-    user,
-  };
 };
 
 const Dashboard = () => {
